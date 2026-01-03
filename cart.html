@@ -1,0 +1,209 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>Cart | Livora Furniture</title>
+  <meta name="description" content="Livora Furniture — Designed for Better Living. Luxury classic sofas, beds, dining and more. Islandwide delivery in Sri Lanka."/>
+  <link rel="icon" href="assets/logo.png"/>
+  <link rel="stylesheet" href="assets/css/styles.css"/>
+</head>
+<body>
+  <header class="nav">
+    <div class="nav-inner">
+      <a class="brand" href="index.html" aria-label="Livora Furniture Home">
+        <img src="assets/logo.png" alt="Livora Furniture logo"/>
+        <div>
+          <div class="title">Livora Furniture</div>
+          <div class="tag">Designed for Better Living</div>
+        </div>
+      </a>
+
+      <nav class="nav-links" aria-label="Site">
+        <a href="index.html">Home</a>
+        <a href="shop.html">Shop</a>
+        <a href="gallery.html">Gallery</a>
+        <a href="reviews.html">Reviews</a>
+        <a href="faq.html">FAQ</a>
+        <a href="about.html">About</a>
+        <a href="contact.html">Contact</a>
+        <a class="pill secondary" href="cart.html">Cart (<span data-cart-count>0</span>)</a>
+        <a class="pill" href="https://wa.me/94717227327" target="_blank" rel="noopener">WhatsApp</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container">
+    
+<div class="section-title">
+  <div>
+    <h2>Your Cart</h2>
+    <p>Checkout sends your order via WhatsApp (no online payment)</p>
+  </div>
+</div>
+
+<section class="row">
+  <div class="panel">
+    <table class="table" id="cartTable">
+      <thead>
+        <tr>
+          <th>Item</th>
+          <th>Options</th>
+          <th>Qty</th>
+          <th>Price</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody></tbody>
+    </table>
+
+    <div class="cart-summary">
+      <div class="small">Total</div>
+      <div class="price" id="cartTotal">LKR 0</div>
+    </div>
+
+    <div class="btnrow" style="margin-top:12px">
+      <a class="btn" href="shop.html">Continue Shopping</a>
+      <button class="btn primary" id="clearCart">Clear Cart</button>
+    </div>
+  </div>
+
+  <div class="panel">
+    <h3 style="margin-top:0">Checkout</h3>
+    <div class="small">Enter your details and send the order via WhatsApp.</div>
+
+    <div style="margin-top:12px">
+      <label class="small">Name</label><br/>
+      <input class="input" id="cName" placeholder="Your name" style="width:100%"/>
+    </div>
+    <div style="margin-top:10px">
+      <label class="small">City</label><br/>
+      <input class="input" id="cCity" placeholder="City / Area" style="width:100%"/>
+    </div>
+    <div style="margin-top:10px">
+      <label class="small">Delivery Address</label><br/>
+      <input class="input" id="cAddress" placeholder="Address" style="width:100%"/>
+    </div>
+    <div style="margin-top:10px">
+      <label class="small">Note (optional)</label><br/>
+      <input class="input" id="cNote" placeholder="Preferred delivery time, etc." style="width:100%"/>
+    </div>
+
+    <div class="btnrow" style="margin-top:12px">
+      <button class="btn primary" id="placeOrder">Place Order (WhatsApp)</button>
+      <a class="btn" href="tel:0717227327">Call</a>
+    </div>
+
+    <div class="notice" style="margin-top:12px">
+      <strong>Delivery:</strong> Islandwide delivery available. We will confirm stock and delivery time after you message us.
+    </div>
+  </div>
+</section>
+
+<script>
+function renderCart(){
+  const cart = getCart();
+  const tbody = document.querySelector("#cartTable tbody");
+  if(cart.length === 0){
+    tbody.innerHTML = `<tr><td colspan="5" class="small">Your cart is empty. <a href="shop.html" style="text-decoration:underline">Shop products</a>.</td></tr>`;
+    document.getElementById("cartTotal").textContent = formatLKR(0);
+    return;
+  }
+
+  tbody.innerHTML = cart.map(i => `
+    <tr>
+      <td>
+        <div style="display:flex; gap:10px; align-items:center;">
+          <img src="${i.image || 'assets/logo.png'}" alt="" style="width:54px;height:54px;border-radius:12px;object-fit:cover;border:1px solid rgba(47,55,67,.12);background:#fff"/>
+          <div>
+            <div style="font-weight:800">${i.name}</div>
+            <div class="small">${formatLKR(i.priceLKR)}</div>
+          </div>
+        </div>
+      </td>
+      <td class="small">Size: ${i.size}<br/>Color: ${i.color}</td>
+      <td>
+        <input class="input" data-qty="${i.key}" type="number" min="1" value="${i.qty}" style="width:86px"/>
+      </td>
+      <td class="small">${formatLKR((Number(i.priceLKR)||0) * (Number(i.qty)||1))}</td>
+      <td><button class="btn" data-remove="${i.key}">Remove</button></td>
+    </tr>
+  `).join("");
+
+  document.getElementById("cartTotal").textContent = formatLKR(cartTotal(cart));
+
+  document.querySelectorAll("[data-remove]").forEach(btn=>{
+    btn.addEventListener("click", ()=>{
+      removeFromCart(btn.getAttribute("data-remove"));
+      renderCart();
+    });
+  });
+
+  document.querySelectorAll("[data-qty]").forEach(inp=>{
+    inp.addEventListener("change", ()=>{
+      const key = inp.getAttribute("data-qty");
+      const cart = getCart();
+      const item = cart.find(x=>x.key===key);
+      if(item){
+        item.qty = Math.max(1, Number(inp.value||1));
+        saveCart(cart);
+        renderCart();
+      }
+    });
+  });
+}
+
+document.getElementById("clearCart").addEventListener("click", ()=>{
+  saveCart([]);
+  renderCart();
+});
+
+document.getElementById("placeOrder").addEventListener("click", ()=>{
+  const cart = getCart();
+  if(cart.length === 0){
+    alert("Your cart is empty.");
+    return;
+  }
+  const customer = {
+    name: document.getElementById("cName").value.trim(),
+    city: document.getElementById("cCity").value.trim(),
+    address: document.getElementById("cAddress").value.trim(),
+    note: document.getElementById("cNote").value.trim(),
+  };
+  if(!customer.name || !customer.city || !customer.address){
+    alert("Please enter Name, City, and Address.");
+    return;
+  }
+  const msg = buildWhatsAppOrderMessage(cart, customer);
+  openWhatsAppMessage(msg);
+});
+
+renderCart();
+</script>
+
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+      <div>
+        <strong>Livora Furniture</strong><br/>
+        <small>Designed for Better Living</small><br/>
+        <small>Islandwide delivery available • Sri Lanka</small>
+      </div>
+      <div>
+        <a href="delivery.html">Delivery & Warranty</a>
+        <a href="contact.html">Contact</a>
+        <a href="shop.html">Shop</a>
+      </div>
+      <div>
+        <small>WhatsApp / Call: <a href="tel:0717227327">0717227327</a></small><br/>
+        <small>Email: <a href="mailto:furniturelivora@gmail.com">furniturelivora@gmail.com</a></small>
+      </div>
+    </div>
+  </footer>
+
+  <a class="fab" href="https://wa.me/94717227327" target="_blank" rel="noopener" aria-label="Chat on WhatsApp">WhatsApp</a>
+
+  <script src="assets/js/app.js"></script>
+</body>
+</html>

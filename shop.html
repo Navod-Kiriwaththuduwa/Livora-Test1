@@ -1,0 +1,160 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>Shop | Livora Furniture</title>
+  <meta name="description" content="Livora Furniture — Designed for Better Living. Luxury classic sofas, beds, dining and more. Islandwide delivery in Sri Lanka."/>
+  <link rel="icon" href="assets/logo.png"/>
+  <link rel="stylesheet" href="assets/css/styles.css"/>
+</head>
+<body>
+  <header class="nav">
+    <div class="nav-inner">
+      <a class="brand" href="index.html" aria-label="Livora Furniture Home">
+        <img src="assets/logo.png" alt="Livora Furniture logo"/>
+        <div>
+          <div class="title">Livora Furniture</div>
+          <div class="tag">Designed for Better Living</div>
+        </div>
+      </a>
+
+      <nav class="nav-links" aria-label="Site">
+        <a href="index.html">Home</a>
+        <a href="shop.html">Shop</a>
+        <a href="gallery.html">Gallery</a>
+        <a href="reviews.html">Reviews</a>
+        <a href="faq.html">FAQ</a>
+        <a href="about.html">About</a>
+        <a href="contact.html">Contact</a>
+        <a class="pill secondary" href="cart.html">Cart (<span data-cart-count>0</span>)</a>
+        <a class="pill" href="https://wa.me/94717227327" target="_blank" rel="noopener">WhatsApp</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container">
+    
+<div class="section-title">
+  <div>
+    <h2>Shop</h2>
+    <p>12 products • Islandwide delivery available</p>
+  </div>
+</div>
+
+<div class="filters">
+  <select id="filterCategory" class="select">
+    <option value="All">All Categories</option>
+    <option value="New Collection">New Collection</option>
+    <option value="Best Sellers">Best Sellers</option>
+    <option value="Luxury">Luxury</option>
+  </select>
+
+  <select id="filterType" class="select">
+    <option value="All">All Types</option>
+    <option value="Sofa Set">Sofa Sets</option>
+    <option value="Bed">Beds</option>
+    <option value="Dining">Dining</option>
+    <option value="Table">Tables</option>
+    <option value="TV Console">TV Consoles</option>
+  </select>
+
+  <input id="search" class="input" placeholder="Search products..." />
+</div>
+
+<section id="shopGrid" class="grid"></section>
+
+<script>
+(async () => {
+  const products = await loadProducts();
+
+  const categorySelect = document.getElementById("filterCategory");
+  const typeSelect = document.getElementById("filterType");
+  const search = document.getElementById("search");
+  const grid = document.getElementById("shopGrid");
+
+  const hash = decodeURIComponent(location.hash.replace("#",""));
+  if(hash){
+    const opt = [...categorySelect.options].find(o=>o.value===hash);
+    if(opt) categorySelect.value = hash;
+  }
+
+  function render(){
+    const cat = categorySelect.value;
+    const typ = typeSelect.value;
+    const q = (search.value||"").trim().toLowerCase();
+
+    const filtered = products.filter(p => {
+      const okCat = (cat==="All") || (p.category===cat);
+      const okTyp = (typ==="All") || (p.type===typ);
+      const okQ = !q || (p.name.toLowerCase().includes(q) || p.type.toLowerCase().includes(q) || p.category.toLowerCase().includes(q));
+      return okCat && okTyp && okQ;
+    });
+
+    grid.innerHTML = filtered.map(p => `
+      <div class="card">
+        <div class="img"><img src="${p.images[0]}" alt="${p.name}"/></div>
+        <div class="body">
+          <div class="meta">
+            <div>
+              <div style="font-weight:800">${p.name}</div>
+              <div class="small">${p.category} • ${p.type} • ${p.stockStatus.replaceAll("_"," ")}</div>
+            </div>
+            <div class="price">${formatLKR(p.priceLKR)}</div>
+          </div>
+
+          <div class="small">Sizes: ${p.sizes.join(", ")} • Colors: ${p.colors.slice(0,3).join(", ")}</div>
+
+          <div class="btnrow">
+            <a class="btn primary" href="product.html?id=${encodeURIComponent(p.id)}">View</a>
+            <button class="btn" data-add="${p.id}">Add</button>
+          </div>
+        </div>
+      </div>
+    `).join("");
+
+    document.querySelectorAll("[data-add]").forEach(btn => {
+      btn.addEventListener("click", () => {
+        const id = btn.getAttribute("data-add");
+        const p = products.find(x=>x.id===id);
+        addToCart({
+          id: p.id, name: p.name, priceLKR: p.priceLKR,
+          size: p.sizes[0], color: p.colors[0], qty: 1, image: p.images[0]
+        });
+        btn.textContent = "Added ✓";
+        setTimeout(()=>btn.textContent="Add", 1200);
+      });
+    });
+  }
+
+  [categorySelect, typeSelect, search].forEach(el => el.addEventListener("input", render));
+  render();
+})().catch(console.error);
+</script>
+
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+      <div>
+        <strong>Livora Furniture</strong><br/>
+        <small>Designed for Better Living</small><br/>
+        <small>Islandwide delivery available • Sri Lanka</small>
+      </div>
+      <div>
+        <a href="delivery.html">Delivery & Warranty</a>
+        <a href="contact.html">Contact</a>
+        <a href="shop.html">Shop</a>
+      </div>
+      <div>
+        <small>WhatsApp / Call: <a href="tel:0717227327">0717227327</a></small><br/>
+        <small>Email: <a href="mailto:furniturelivora@gmail.com">furniturelivora@gmail.com</a></small>
+      </div>
+    </div>
+  </footer>
+
+  <a class="fab" href="https://wa.me/94717227327" target="_blank" rel="noopener" aria-label="Chat on WhatsApp">WhatsApp</a>
+
+  <script src="assets/js/app.js"></script>
+</body>
+</html>

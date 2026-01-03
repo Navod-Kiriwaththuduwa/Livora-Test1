@@ -1,0 +1,111 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>Contact | Livora Furniture</title>
+  <meta name="description" content="Livora Furniture — Designed for Better Living. Luxury classic sofas, beds, dining and more. Islandwide delivery in Sri Lanka."/>
+  <link rel="icon" href="assets/logo.png"/>
+  <link rel="stylesheet" href="assets/css/styles.css"/>
+</head>
+<body>
+  <header class="nav">
+    <div class="nav-inner">
+      <a class="brand" href="index.html" aria-label="Livora Furniture Home">
+        <img src="assets/logo.png" alt="Livora Furniture logo"/>
+        <div>
+          <div class="title">Livora Furniture</div>
+          <div class="tag">Designed for Better Living</div>
+        </div>
+      </a>
+
+      <nav class="nav-links" aria-label="Site">
+        <a href="index.html">Home</a>
+        <a href="shop.html">Shop</a>
+        <a href="gallery.html">Gallery</a>
+        <a href="reviews.html">Reviews</a>
+        <a href="faq.html">FAQ</a>
+        <a href="about.html">About</a>
+        <a href="contact.html">Contact</a>
+        <a class="pill secondary" href="cart.html">Cart (<span data-cart-count>0</span>)</a>
+        <a class="pill" href="https://wa.me/94717227327" target="_blank" rel="noopener">WhatsApp</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container">
+    
+<div class="section-title">
+  <div>
+    <h2>Contact</h2>
+    <p>We respond fast on WhatsApp</p>
+  </div>
+</div>
+
+<section class="panel">
+  <div class="row">
+    <div>
+      <h3 style="margin-top:0">WhatsApp / Call</h3>
+      <div class="notice">
+        <strong>0717227327</strong><br/>
+        Islandwide delivery available
+      </div>
+
+      <div class="btnrow" style="margin-top:12px; max-width:420px;">
+        <a class="btn primary" href="https://wa.me/94717227327" target="_blank" rel="noopener">WhatsApp</a>
+        <a class="btn" href="tel:0717227327">Call</a>
+      </div>
+
+      <div style="margin-top:14px" class="small">
+        Email: <a href="mailto:furniturelivora@gmail.com" style="text-decoration:underline">furniturelivora@gmail.com</a>
+      </div>
+    </div>
+
+    <div>
+      <h3 style="margin-top:0">Quick Message</h3>
+      <div class="small">Use this to create a pre-filled WhatsApp message.</div>
+      <div style="margin-top:10px">
+        <input id="msg" class="input" style="width:100%" placeholder="Type your message..." />
+      </div>
+      <div class="btnrow" style="margin-top:12px">
+        <button class="btn primary" id="send">Send on WhatsApp</button>
+        <a class="btn" href="shop.html">Browse Products</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+document.getElementById("send").addEventListener("click", ()=>{
+  const txt = document.getElementById("msg").value.trim() || "Hi Livora Furniture, I’d like to know more about your products.";
+  const msg = encodeURIComponent(txt);
+  window.open(`${LIVORA.whatsappBase}?text=${msg}`, "_blank");
+});
+</script>
+
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+      <div>
+        <strong>Livora Furniture</strong><br/>
+        <small>Designed for Better Living</small><br/>
+        <small>Islandwide delivery available • Sri Lanka</small>
+      </div>
+      <div>
+        <a href="delivery.html">Delivery & Warranty</a>
+        <a href="contact.html">Contact</a>
+        <a href="shop.html">Shop</a>
+      </div>
+      <div>
+        <small>WhatsApp / Call: <a href="tel:0717227327">0717227327</a></small><br/>
+        <small>Email: <a href="mailto:furniturelivora@gmail.com">furniturelivora@gmail.com</a></small>
+      </div>
+    </div>
+  </footer>
+
+  <a class="fab" href="https://wa.me/94717227327" target="_blank" rel="noopener" aria-label="Chat on WhatsApp">WhatsApp</a>
+
+  <script src="assets/js/app.js"></script>
+</body>
+</html>
