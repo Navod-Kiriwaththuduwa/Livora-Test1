@@ -1,0 +1,296 @@
+[
+  {
+    "id": "royal-chesterfield-311",
+    "name": "Royal Chesterfield 3+1+1",
+    "category": "Luxury",
+    "type": "Sofa Set",
+    "priceLKR": 195000,
+    "sizes": [
+      "3+1+1"
+    ],
+    "colors": [
+      "Navy",
+      "Ivory",
+      "Coffee"
+    ],
+    "stockStatus": "in_stock",
+    "delivery": "Islandwide delivery available",
+    "images": [
+      "products/images/royal-chesterfield.jpg"
+    ],
+    "highlights": [
+      "Tufted premium finish",
+      "Deep comfort cushions",
+      "Solid frame build"
+    ]
+  },
+  {
+    "id": "classic-ivory-chesterfield-311",
+    "name": "Classic Ivory Chesterfield 3+1+1",
+    "category": "Luxury",
+    "type": "Sofa Set",
+    "priceLKR": 195000,
+    "sizes": [
+      "3+1+1"
+    ],
+    "colors": [
+      "Ivory",
+      "Cream",
+      "Beige"
+    ],
+    "stockStatus": "low_stock",
+    "delivery": "Islandwide delivery available",
+    "images": [
+      "products/images/ivory-chesterfield.jpg"
+    ],
+    "highlights": [
+      "Timeless tufted design",
+      "Soft premium upholstery",
+      "Perfect for classic interiors"
+    ]
+  },
+  {
+    "id": "ivory-floral-chesterfield-311",
+    "name": "Ivory Floral Chesterfield 3+1+1",
+    "category": "New Collection",
+    "type": "Sofa Set",
+    "priceLKR": 195000,
+    "sizes": [
+      "3+1+1"
+    ],
+    "colors": [
+      "Ivory Floral",
+      "Ivory + Yellow Accent"
+    ],
+    "stockStatus": "in_stock",
+    "delivery": "Islandwide delivery available",
+    "images": [
+      "products/images/ivory-floral-chesterfield.jpg"
+    ],
+    "highlights": [
+      "Accent floral wing chairs",
+      "Elegant classic room fit",
+      "Statement living-room set"
+    ]
+  },
+  {
+    "id": "coffee-chesterfield-311",
+    "name": "Coffee Chesterfield 3+1+1",
+    "category": "Best Sellers",
+    "type": "Sofa Set",
+    "priceLKR": 195000,
+    "sizes": [
+      "3+1+1"
+    ],
+    "colors": [
+      "Coffee",
+      "Mocha",
+      "Caramel"
+    ],
+    "stockStatus": "in_stock",
+    "delivery": "Islandwide delivery available",
+    "images": [
+      "products/images/coffee-chesterfield.jpg"
+    ],
+    "highlights": [
+      "Warm tones for cozy homes",
+      "Tufted elegance",
+      "Durable build quality"
+    ]
+  },
+  {
+    "id": "blue-modern-311",
+    "name": "Midnight Blue Studio 3+1+1",
+    "category": "New Collection",
+    "type": "Sofa Set",
+    "priceLKR": 115000,
+    "sizes": [
+      "3+1+1"
+    ],
+    "colors": [
+      "Midnight Blue",
+      "Charcoal"
+    ],
+    "stockStatus": "in_stock",
+    "delivery": "Islandwide delivery available",
+    "images": [
+      "products/images/blue-modern-set.jpg"
+    ],
+    "highlights": [
+      "Modern minimal silhouette",
+      "Comfort-first cushions",
+      "Easy-to-style neutral palette"
+    ]
+  },
+  {
+    "id": "teal-modern-311",
+    "name": "Velvet Teal Modern 3+1+1",
+    "category": "Best Sellers",
+    "type": "Sofa Set",
+    "priceLKR": 115000,
+    "sizes": [
+      "3+1+1"
+    ],
+    "colors": [
+      "Teal",
+      "Grey",
+      "Navy"
+    ],
+    "stockStatus": "in_stock",
+    "delivery": "Islandwide delivery available",
+    "images": [
+      "products/images/teal-modern-set.jpg"
+    ],
+    "highlights": [
+      "Soft velvet feel",
+      "Classic tufting touch",
+      "Perfect for bright living rooms"
+    ]
+  },
+  {
+    "id": "oakline-dining-6",
+    "name": "Oakline 6-Seater Dining Set",
+    "category": "Best Sellers",
+    "type": "Dining",
+    "priceLKR": 165000,
+    "sizes": [
+      "6 Seater"
+    ],
+    "colors": [
+      "Walnut",
+      "Natural Oak"
+    ],
+    "stockStatus": "in_stock",
+    "delivery": "Islandwide delivery available",
+    "images": [
+      "products/images/teal-modern-set.jpg"
+    ],
+    "highlights": [
+      "Sturdy hardwood build",
+      "Comfortable seating",
+      "Ideal for family dining"
+    ]
+  },
+  {
+    "id": "luxe-marble-dining-6",
+    "name": "Luxe Marble Top 6-Seater Dining",
+    "category": "Luxury",
+    "type": "Dining",
+    "priceLKR": 235000,
+    "sizes": [
+      "6 Seater"
+    ],
+    "colors": [
+      "White Marble",
+      "Black Marble"
+    ],
+    "stockStatus": "pre_order",
+    "delivery": "Islandwide delivery available",
+    "images": [
+      "products/images/blue-modern-set.jpg"
+    ],
+    "highlights": [
+      "Premium marble top",
+      "Luxury finish",
+      "Made-to-order options"
+    ]
+  },
+  {
+    "id": "comfortplus-queen-bed",
+    "name": "ComfortPlus Queen Bed (with headboard)",
+    "category": "Best Sellers",
+    "type": "Bed",
+    "priceLKR": 145000,
+    "sizes": [
+      "Queen"
+    ],
+    "colors": [
+      "Grey",
+      "Beige",
+      "Navy"
+    ],
+    "stockStatus": "in_stock",
+    "delivery": "Islandwide delivery available",
+    "images": [
+      "products/images/newyear-teal-set.jpg"
+    ],
+    "highlights": [
+      "Supportive headboard",
+      "Strong frame build",
+      "Clean modern look"
+    ]
+  },
+  {
+    "id": "royal-king-bed-tufted",
+    "name": "Royal King Bed (Tufted)",
+    "category": "Luxury",
+    "type": "Bed",
+    "priceLKR": 210000,
+    "sizes": [
+      "King"
+    ],
+    "colors": [
+      "Ivory",
+      "Coffee",
+      "Charcoal"
+    ],
+    "stockStatus": "low_stock",
+    "delivery": "Islandwide delivery available",
+    "images": [
+      "products/images/royal-chesterfield.jpg"
+    ],
+    "highlights": [
+      "Tufted luxury headboard",
+      "Premium upholstery",
+      "Statement bedroom piece"
+    ]
+  },
+  {
+    "id": "minimal-glass-coffee-table",
+    "name": "Minimal Coffee Table (Glass Top)",
+    "category": "New Collection",
+    "type": "Table",
+    "priceLKR": 38000,
+    "sizes": [
+      "Standard"
+    ],
+    "colors": [
+      "Black",
+      "Gold"
+    ],
+    "stockStatus": "in_stock",
+    "delivery": "Islandwide delivery available",
+    "images": [
+      "products/images/blue-modern-set.jpg"
+    ],
+    "highlights": [
+      "Minimal modern design",
+      "Easy to maintain",
+      "Pairs with any sofa set"
+    ]
+  },
+  {
+    "id": "nordic-tv-console-6ft",
+    "name": "Nordic TV Console (6ft)",
+    "category": "Best Sellers",
+    "type": "TV Console",
+    "priceLKR": 72000,
+    "sizes": [
+      "6ft"
+    ],
+    "colors": [
+      "Oak",
+      "Walnut"
+    ],
+    "stockStatus": "in_stock",
+    "delivery": "Islandwide delivery available",
+    "images": [
+      "products/images/teal-modern-set.jpg"
+    ],
+    "highlights": [
+      "Clean lines",
+      "Ample storage",
+      "Modern living-room fit"
+    ]
+  }
+]
